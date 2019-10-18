@@ -1,81 +1,74 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 const AddProduct = () => {
+    const [name, saveName] = useState('');
+    const [price, saveDish] = useState('');
+    const [category, saveCategory] = useState('');
+    const readRadioValue = e => { saveCategory(e.target.value);}
+    const [error, saveError] = useState(false);
+
+    const addProduct = e => {
+        e.preventDefault();
+        if(name==='' || price==='' || category==='')
+            { saveError(true); return; }
+        saveError(false);
+        try {
+            const resultado = await axios.post('http://localhost:4000/restaurant', {
+                nombre,
+                precio,
+                categoria
+            });
+            console.log(resultado);
+            //sweet Alert
+        }
+        catch(error) {
+            console.log(error);
+            //sweet Alert
+            }
+        //redireccionar a /productos
+    
+    }    
+
     return(
         <div className="col-md-8 mx-auto ">
             <h1 className="text-center">Agregar Nuevo Producto</h1>
 
-            <form
-                className="mt-5"
-            >
+            <form className="mt-5" onSubmit={addProduct}>
                 <div className="form-group">
                     <label>Nombre Platillo</label>
-                    <input 
-                        type="text" 
-                        className="form-control" 
-                        name="nombre" 
-                        placeholder="Nombre Platillo"
-                    />
+                    <input type="text" className="form-control" name="nombre" placeholder="Nombre Platillo" onChange = { e => saveName(e.target.value)}/>
                 </div>
-
                 <div className="form-group">
                     <label>Precio Platillo</label>
-                    <input 
-                        type="number" 
-                        className="form-control" 
-                        name="precio"
-                        placeholder="Precio Platillo"
-                    />
+                    <input type="number" className="form-control" name="precio" placeholder="Precio Platillo" onChange = { e => saveDish(e.target.value)}/>
                 </div>
 
                 <legend className="text-center">Categoría:</legend>
                 <div className="text-center">
-                <div className="form-check form-check-inline">
-                    <input 
-                        className="form-check-input" 
-                        type="radio" 
-                        name="categoria"
-                        value="postre"
-                    />
-                    <label className="form-check-label">
-                        Postre
-                    </label>
-                </div>
-                <div className="form-check form-check-inline">
-                    <input 
-                        className="form-check-input" 
-                        type="radio" 
-                        name="categoria"
-                        value="bebida"
-                    />
-                    <label className="form-check-label">
-                        Bebida
-                    </label>
-                </div>
-
-                <div className="form-check form-check-inline">
-                    <input 
-                        className="form-check-input" 
-                        type="radio" 
-                        name="categoria"
-                        value="cortes"
-                    />
-                    <label className="form-check-label">
-                        Cortes
-                    </label>
-                </div>
-
-                <div className="form-check form-check-inline">
-                    <input 
-                        className="form-check-input" 
-                        type="radio" 
-                        name="categoria"
-                        value="ensalada"
-                    />
-                    <label className="form-check-label">
-                        Ensalada
-                    </label>
-                </div>
+                    <div className="form-check form-check-inline">
+                        <input className="form-check-input" type="radio" name="categoria" value="postre" onChange = {readRadioValue}/>
+                        <label className="form-check-label">
+                            Postre
+                        </label>
+                    </div>
+                    <div className="form-check form-check-inline">
+                        <input className="form-check-input" type="radio" name="categoria" value="bebida" onChange = {readRadioValue}/>
+                        <label className="form-check-label">
+                            Bebida
+                        </label>
+                    </div>
+                    <div className="form-check form-check-inline">
+                        <input className="form-check-input" type="radio" name="categoria" value="cortes" onChange = {readRadioValue}/>
+                        <label className="form-check-label">
+                            Cortes
+                        </label>
+                    </div>
+                    <div className="form-check form-check-inline">
+                        <input className="form-check-input" type="radio" name="categoria" value="ensalada" onChange = {readRadioValue}/>
+                        <label className="form-check-label">
+                            Ensalada
+                        </label>
+                    </div>
                 </div>
 
                 <input type="submit" className="font-weight-bold text-uppercase mt-5 btn btn-primary btn-block py-3" value="Agregar Producto" />
