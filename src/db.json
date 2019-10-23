@@ -1,10 +1,52 @@
 {
   "restaurant": [
     {
-      "precio": "80",
-      "nombre": "Hamburguesa",
-      "categoria": "comidas",
-      "id": 1
+      "name": "asasas",
+      "price": "12121",
+      "category": "postre",
+      "id": 2
+    },
+    {
+      "name": "asasas",
+      "price": "12121",
+      "category": "postre",
+      "id": 3
+    },
+    {
+      "name": "asasas",
+      "price": "12121",
+      "category": "postre",
+      "id": 4
+    },
+    {
+      "name": "nuevo",
+      "price": "4343",
+      "category": "bebida",
+      "id": 5
+    },
+    {
+      "name": "qwq",
+      "price": "21",
+      "category": "cortes",
+      "id": 6
+    },
+    {
+      "name": "qwqwqw",
+      "price": "3434",
+      "category": "cortes",
+      "id": 7
+    },
+    {
+      "name": "edson",
+      "price": "400000",
+      "category": "postre",
+      "id": 9
+    },
+    {
+      "name": "trtrt",
+      "price": "3232",
+      "category": "bebida",
+      "id": 10
     }
   ]
 }

@@ -1,16 +1,15 @@
 import React, {useState} from 'react';
 import Swal from 'sweetalert2';
 import axios from 'axios';
-import {withRouter} from 'react-router-dom';
 
-const AddProduct = ({history, saveReload}) => {
+const EditProduct = ({product}) => {
     const [name, saveName] = useState('');
     const [price, saveDish] = useState('');
     const [category, saveCategory] = useState('');
     const readRadioValue = e => { saveCategory(e.target.value);}
     const [error, saveError] = useState(false);
 
-    const addProduct = async(e) => {
+    const editProduct = async(e) => {
         e.preventDefault();
         if(name==='' || price==='' || category==='')
             { saveError(true); return; }
@@ -33,15 +32,13 @@ const AddProduct = ({history, saveReload}) => {
             //sweet Alert
             }
         //redireccionar a /productos
-        saveReload(true)
-        history.push('/products');
-    } 
+    }
 
-    return(
+    return (
         <div className="col-md-8 mx-auto ">
-            <h1 className="text-center">Agregar Nuevo Producto</h1>
+            <h1 className="text-center">Modificar Nuevo Producto</h1>
 
-            <form className="mt-5" onSubmit={addProduct}>
+            <form className="mt-5" onSubmit={editProduct}>
                 <div className="form-group">
                     <label>Nombre Platillo</label>
                     <input type="text" className="form-control" name="nombre" placeholder="Nombre Platillo" onChange = { e => saveName(e.target.value)}/>
@@ -84,5 +81,4 @@ const AddProduct = ({history, saveReload}) => {
     );
 }
  
-export default withRouter(AddProduct);
-
+export default EditProduct;
