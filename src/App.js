@@ -37,7 +37,6 @@ function App() {
             <AddProduct saveReload={saveReload}/>
           )}/>
           <Route exact path="/products/:id" component={Product}/>
-          <Route exact path="/products/edit/:id" component={EditProduct}/>
           <Route exact path="/products/edit/:id" render={ props => {
             const idProduct = parseInt(props.match.params.id)
             const product = productos.filter(product => product.id === idProduct)
