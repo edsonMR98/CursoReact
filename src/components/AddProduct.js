@@ -30,8 +30,12 @@ const AddProduct = ({history, saveReload}) => {
         }
         catch(error) {
             console.log(error);
-            //sweet Alert
-            }
+            Swal.fire(
+                'Error!',
+                'Your file couldn´t be added.',
+                'error'
+            )
+        }
         //redireccionar a /productos
         saveReload(true)
         history.push('/products');

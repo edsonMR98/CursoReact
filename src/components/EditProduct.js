@@ -2,27 +2,47 @@ import React, {useState} from 'react';
 import {useRef} from 'react';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import {withRouter} from 'react-router-dom';
 
-const EditProduct = ({product}) => {
+const EditProduct = ({history, product}) => {
     const [category, saveCategory] = useState('');
     const readRadioValue = e => { saveCategory(e.target.value);}
     const [error, saveError] = useState(false);
     const nameRef = useRef('');
     const priceRef = useRef('');
 
-    const editProduct = e => {
+    const editProduct = async(e) => {
         e.preventDefault();
         console.log(product)
-        const editDish = {
-	        name = nameRef.current.value,
-            price = priceRef.current.value
+        try {
+            const editDish = {
+                name : nameRef.current.value,
+                price : priceRef.current.value,
+                category,
+                id: product.id
+            }
+            console.log(editDish)
+            /*const resultado = await axios.post('http://localhost:4000/restaurant', {
+                name: editDish.name,
+                price: editDish.price,
+                category: editDish.category,
+                id: editDish.id
+            });*/
+            Swal.fire(
+                'Edited!',
+                'Your file has been "edited".',
+                'success'
+            )
         }
-        console.log(editDish)
-        Swal.fire(
-            'Edited!',
-            'Your file has been edited.',
-            'success'
-        )
+        catch(error) {
+            console.log(error);
+            Swal.fire(
+                'Error!',
+                'Your file couldn´t be edited.',
+                'error'
+            )
+        }
+        history.push('/products');
     }
 
     return (
@@ -72,4 +92,4 @@ const EditProduct = ({product}) => {
     );
 }
  
-export default EditProduct;
+export default withRouter(EditProduct);

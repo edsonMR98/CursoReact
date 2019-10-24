@@ -47,6 +47,12 @@
       "price": "3232",
       "category": "bebida",
       "id": 10
+    },
+    {
+      "name": "sas",
+      "price": "212",
+      "category": "cortes",
+      "id": 12
     }
   ]
 }
