@@ -29,7 +29,7 @@ const EditProduct = ({history, product, saveReload}) => {
             });
             Swal.fire(
                 'Edited!',
-                'Your file has been "edited".',
+                'Your file has been edited.',
                 'success'
             )
         }
