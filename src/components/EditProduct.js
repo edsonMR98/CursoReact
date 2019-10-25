@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import {withRouter} from 'react-router-dom';
 
-const EditProduct = ({history, product}) => {
+const EditProduct = ({history, product, saveReload}) => {
     const [category, saveCategory] = useState('');
     const readRadioValue = e => { saveCategory(e.target.value);}
     const [error, saveError] = useState(false);
@@ -41,6 +41,7 @@ const EditProduct = ({history, product}) => {
                 'error'
             )
         }
+        saveReload(true)
         history.push('/products');
     }
 

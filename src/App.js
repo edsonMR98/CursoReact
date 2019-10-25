@@ -41,7 +41,7 @@ function App() {
             const idProduct = parseInt(props.match.params.id)
             const product = productos.filter(product => product.id === idProduct)
             return (
-              <EditProduct product={product[0]}/>
+              <EditProduct product={product[0]} saveReload={saveReload}/>
             )
           }}/>
         </Switch>
