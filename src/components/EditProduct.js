@@ -22,12 +22,11 @@ const EditProduct = ({history, product}) => {
                 id: product.id
             }
             console.log(editDish)
-            /*const resultado = await axios.post('http://localhost:4000/restaurant', {
+            const resultado = await axios.put(`http://localhost:4000/restaurant/${product.id}`, {
                 name: editDish.name,
                 price: editDish.price,
-                category: editDish.category,
-                id: editDish.id
-            });*/
+                category: editDish.category
+            });
             Swal.fire(
                 'Edited!',
                 'Your file has been "edited".',
